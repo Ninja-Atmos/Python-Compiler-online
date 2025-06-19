@@ -45,6 +45,6 @@ An advanced web-based Python compiler built using **React**, **Flask**, and **Py
 
 ## 🌐 Live Demo
 
-👉 [Live App](https://your-username.github.io/your-repo-name)
+👉 [Live App]([https://your-username.github.io/your-repo-name](https://ninja-atmos.github.io/))
 
 ---
