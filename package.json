@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://ninja-atmos.github.io/Python-Compiler-online/",
+  "homepage": "https://ninja-atmos.github.io/",
   "scripts": {
     "dev": "vite --host --port 3000",
     "build": "tsc && vite build",

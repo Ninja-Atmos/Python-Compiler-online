@@ -97,22 +97,22 @@ const Editor = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-900/95 via-blue-900/95 to-slate-800/95 text-white p-4 relative">
+    <div className="min-h-screen bg-gradient-to-br from-slate-900/95 via-blue-900/95 to-slate-800/95 text-white p-2 sm:p-4 relative">
       {/* <CodeWallpaper /> Removed for performance */}
       <div className="container mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           {/* Code Editor */}
-          <div className="bg-slate-800/80 rounded-lg p-4 backdrop-blur-sm transform transition-all duration-300 hover:shadow-2xl border border-slate-700/50">
-            <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold flex items-center">
+          <div className="bg-slate-800/80 rounded-lg p-2 sm:p-4 backdrop-blur-sm transform transition-all duration-300 hover:shadow-2xl border border-slate-700/50 mb-4 lg:mb-0">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-3 sm:mb-4 gap-2">
+              <h2 className="text-lg sm:text-xl font-semibold flex items-center">
                 <Sparkles className="w-5 h-5 mr-2 text-yellow-400 animate-pulse" />
                 Code Editor
               </h2>
-              <div className="flex space-x-2">
+              <div className="flex flex-wrap gap-2">
                 <button
                   onClick={handleRunCode}
                   disabled={isLoading || isRunning}
-                  className={`flex items-center px-3 py-1 rounded transition-all duration-300 transform hover:scale-105 ${
+                  className={`flex items-center px-3 py-1 rounded transition-all duration-300 transform hover:scale-105 text-sm sm:text-base ${
                     isLoading || isRunning
                       ? 'bg-gray-600 cursor-not-allowed'
                       : 'bg-green-600 hover:bg-green-700 hover:shadow-lg'
@@ -123,28 +123,28 @@ const Editor = () => {
                 </button>
                 <button
                   onClick={handleCopyCode}
-                  className="flex items-center px-3 py-1 bg-blue-600 rounded hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  className="flex items-center px-3 py-1 bg-blue-600 rounded hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm sm:text-base"
                 >
                   <Copy className="w-4 h-4 mr-1" />
                   Copy
                 </button>
                 <button
                   onClick={handleDownloadCode}
-                  className="flex items-center px-3 py-1 bg-purple-600 rounded hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  className="flex items-center px-3 py-1 bg-purple-600 rounded hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm sm:text-base"
                 >
                   <Download className="w-4 h-4 mr-1" />
                   Download
                 </button>
                 <button
                   onClick={handleClearCode}
-                  className="flex items-center px-3 py-1 bg-red-600 rounded hover:bg-red-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg"
+                  className="flex items-center px-3 py-1 bg-red-600 rounded hover:bg-red-700 transition-all duration-300 transform hover:scale-105 hover:shadow-lg text-sm sm:text-base"
                 >
                   <Trash2 className="w-4 h-4 mr-1" />
                   Clear
                 </button>
               </div>
             </div>
-            <div className="w-full h-[500px]">
+            <div className="w-full h-64 sm:h-[400px] md:h-[500px]">
               <MonacoEditor
                 height="100%"
                 defaultLanguage="python"
@@ -152,7 +152,7 @@ const Editor = () => {
                 value={code}
                 onChange={value => setCode(value || '')}
                 options={{
-                  fontSize: 16,
+                  fontSize: 14,
                   minimap: { enabled: false },
                   scrollBeyondLastLine: false,
                   wordWrap: 'on',
@@ -172,13 +172,13 @@ const Editor = () => {
               />
             </div>
             {/* User Input (stdin) */}
-            <div className="mt-4">
-              <label htmlFor="user-input" className="block text-gray-300 mb-1 font-medium">User Input (for input()):</label>
+            <div className="mt-3 sm:mt-4">
+              <label htmlFor="user-input" className="block text-gray-300 mb-1 font-medium text-sm sm:text-base">User Input (for input()):</label>
               <textarea
                 id="user-input"
                 value={userInput}
                 onChange={e => setUserInput(e.target.value)}
-                className="w-full h-20 bg-slate-900/90 text-white p-2 rounded font-mono resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+                className="w-full h-16 sm:h-20 bg-slate-900/90 text-white p-2 rounded font-mono resize-y focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 text-sm sm:text-base"
                 placeholder="Enter input for your code, each line for each input() call"
                 spellCheck="false"
               />
@@ -186,12 +186,12 @@ const Editor = () => {
           </div>
 
           {/* Output */}
-          <div className="bg-slate-800/80 rounded-lg p-4 backdrop-blur-sm transform transition-all duration-300 hover:shadow-2xl border border-slate-700/50">
-            <h2 className="text-xl font-semibold mb-4 flex items-center">
+          <div className="bg-slate-800/80 rounded-lg p-2 sm:p-4 backdrop-blur-sm transform transition-all duration-300 hover:shadow-2xl border border-slate-700/50">
+            <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center">
               <Sparkles className="w-5 h-5 mr-2 text-yellow-400 animate-pulse" />
               Output
             </h2>
-            <pre className="w-full h-[500px] bg-slate-900/90 text-white p-4 rounded font-mono overflow-auto whitespace-pre-wrap transition-all duration-300 flex items-center justify-center">
+            <pre className="w-full h-64 sm:h-[400px] md:h-[500px] bg-slate-900/90 text-white p-2 sm:p-4 rounded font-mono overflow-auto whitespace-pre-wrap transition-all duration-300 flex items-center justify-center text-sm sm:text-base">
               {isLoading ? (
                 <div className="flex items-center justify-center w-full h-full">
                   <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500 mr-3"></div>
@@ -206,7 +206,7 @@ const Editor = () => {
 
         {/* Success Animation */}
         {showSuccess && (
-          <div className="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300 animate-bounce">
+          <div className="fixed bottom-4 right-4 bg-green-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg transform transition-all duration-300 animate-bounce text-sm sm:text-base">
             <div className="flex items-center">
               <Sparkles className="w-5 h-5 mr-2 animate-pulse" />
               Operation successful!
@@ -216,7 +216,7 @@ const Editor = () => {
 
         {/* Running Animation */}
         {isRunning && (
-          <div className="fixed top-4 right-4 bg-blue-500 text-white px-6 py-3 rounded-lg shadow-lg transform transition-all duration-300">
+          <div className="fixed top-4 right-4 bg-blue-500 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg shadow-lg transform transition-all duration-300 text-sm sm:text-base">
             <div className="flex items-center">
               <div className="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2"></div>
               Running code...
